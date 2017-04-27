@@ -36,13 +36,12 @@ end
 def update
   @task = Task.find(params[:id])
   @task.update_attributes(task_params)
-  redirect_to request.referrer
 end 
 
 def destroy
   @task = Task.find(params[:id])
   @task.destroy
-  redirect_to request.referrer 
+  redirect_to root_path
   flash[:alert] = "Task deleted"
 end
 

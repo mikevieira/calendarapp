@@ -38,11 +38,11 @@ $(document).ready(function() {
                   });
             $(ui.draggable).remove();
 
-              $('.icon, .iconpencil').hide();  
+              $('.icon, .iconpencil .iconcopy').hide();  
               $('.tasks').hover(function(){  
-              $('.icon, .iconpencil', this).show(0);  
+              $('.icon, .iconpencil .iconcopy', this).show(0);  
                 }, function(){
-                 $('.icon, .iconpencil', this).hide(0); 
+                 $('.icon, .iconpencil .iconcopy', this).hide(0); 
                 });
             
 
@@ -220,6 +220,7 @@ $(document).ready(function(){
            <%=link_to day_path(day) do %>
            <%=count -2 %> more tasks...
           <% end %>
+          </div>
            <div class="linkdiv" data-toggle="modal"  data-target ='#newModal' data-date=<%=day%>>
           </div>
         </td> <!-- td -->
