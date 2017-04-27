@@ -1,0 +1,39 @@
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href= http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.0/themes/smoothness/jquery-ui.css /> 
+
+  <!-- Time picker link -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.css"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
+
+<script>
+//datepicker for new task date
+$(document).ready(function(){
+  $(".datepicker").datepicker({ 
+      dateFormat: 'yy-mm-dd',
+      showOtherMonths: true,
+      selectOtherMonths: true
+    });
+});
+
+//timepicker 
+$(document).ready(function(){
+  $(".timeend, .timestart").timepicker({'step': 15});
+});
+
+
+</script>
+
+
+
+<%= simple_form_for @task, :html =>{ class: 'booyah-box col-12'} do |f| %>
+
+    <%= f.input :name %>
+     <%= f.input :date, :as => :string,  input_html: {class: 'datepicker'} %>
+     <!--<%= f.input :enddate, :as => :string, :label => 'End Date', input_html: {class: 'datepicker'} %> -->
+    <%= f.input :starttime, :as => :string, :label => 'Start Time', input_html: {class: 'timestart', value: timechop(@task.starttime)} %>
+    <%= f.input :time, :as=> :string, :label => 'End Time', input_html: {class: 'timeend', value: timechop(@task.time)}%>
+    <%= f.input :notes %>
+    <%= f.submit class: 'btn btn-warning' %>
+  <% end %>
